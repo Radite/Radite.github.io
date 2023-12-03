@@ -1,0 +1,167 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #111; /* This should be the dark color from your image */
+    color: white;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 3em; /* Add padding to match the image */
+    background-color: #000; /* Match the header background color */
+}
+
+.logo {
+    color: #fff; /* Text color for the logo */
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #C62828; /* This should be the highlight color from your image */
+}
+
+.search-icon {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
+.portfolio h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.portfolio p {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+/* Portfolio Projects Grid */
+.projects-grid {
+    margin-left: 100px;
+    width:1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+    padding: 20px;
+    margin-right: 100px;
+    animation: flyInFromBottom 1.5s ease-out forwards;
+
+    
+}
+
+.project-card {
+    background: #333; /* Dark card background */
+    color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    height:400px;
+
+
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+}
+
+.project-card img {
+    margin-top: 20px;
+    margin-left:15px;
+    width: 90%;
+    display: block;
+    height: 200px;;
+    border-radius: 5px;
+}
+
+.project-info {
+    padding: 15px;
+
+}
+
+.project-info h3 {
+    text-align: center;
+    color: #C62828; /* Gold color for project title */
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 0.9rem; /* Smaller text for description */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.project-technologies span {
+    display: inline-block;
+    background: #222; /* Darker background for technology tags */
+    color: #C62828; /* Gold color for text */
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* 1 column for mobile screens */
+    }
+}
+
+
+.portfolio-title h1,
+.portfolio-title p {
+    animation: flyInFromTop 0.5s ease-out forwards;
+}
+
+@keyframes flyInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flyInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

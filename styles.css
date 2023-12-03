@@ -1,0 +1,156 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #111; /* This should be the dark color from your image */
+    color: white;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 3em; /* Add padding to match the image */
+    background-color: #000; /* Match the header background color */
+}
+
+.logo {
+    color: #fff; /* Text color for the logo */
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #C62828; /* This should be the highlight color from your image */
+}
+
+.search-icon {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Adjust based on the header height */
+}
+
+.content {
+    display: flex;
+    justify-content: center; /* This centers the .content in the main axis */
+    align-items: center; /* This centers the .content in the cross axis */
+    gap: 50px; /* This adds space between the introduction and the profile picture */
+}
+
+.introduction {
+    /* Adjust the max-width to fit the content and allow for the image to sit beside */
+    max-width: 600px; /* Adjust as needed based on your content */
+}
+
+.profile-picture {
+    /* Adjust the size of the profile picture to match the design */
+    width: 300px; /* Example size, adjust as needed */
+    height: 300px; /* Example size, adjust as needed */
+    border-radius: 50%;
+    overflow: hidden; /* Ensures the image respects the border-radius */
+    border: 5px solid #C62828; /* Adjust the border color to match your design */
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px rgba(198, 40, 40, 0.7); /* Adjust color and opacity */
+}
+
+.profile-picture img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+    border-radius: 50%; /* If the image itself has rounded corners */
+}
+
+.introduction h1 {
+    font-size: 2.5em; /* Adjust the size to match the image */
+    margin: 0.5em 0;
+}
+
+.introduction h1 .name {
+    color: #C62828; /* This should be the highlight color from your image */
+}
+
+.introduction p {
+    font-size: 1.2em; /* Adjust the size to match the image */
+}
+
+.welcome-link {
+    display: inline-block;
+    background-color: transparent;
+    color: #C62828; /* This should be the highlight color from your image */
+    text-decoration: none;
+
+}
+
+.welcome-link:hover {
+    background-color: #C62828; /* This should be the highlight color from your image */
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Stack the elements on smaller screens */
+    }
+
+    .profile-picture {
+        width: 150px; /* Smaller size for the image on mobile */
+        height: 150px;
+        margin-top: 20px; /* Space between the text and the image on mobile */
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#introduction {
+    /* Apply the animation to slide in from the bottom */
+    animation: slideInFromBottom 1s ease forwards;
+}
+
+#profile-picture {
+    /* Apply the animation to slide in from the right */
+    animation: slideInFromRight 1s ease forwards;
+}
