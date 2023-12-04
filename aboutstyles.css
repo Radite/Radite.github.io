@@ -228,24 +228,6 @@ nav ul li a:hover {
 
 /* Media queries for smaller screens */
 @media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 1em;
-    }
-
-    .logo, .search-icon {
-        margin-bottom: 10px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 5px 0;
-    }
-
     .about-container {
         padding-left: 10px;
         padding-right: 10px;
@@ -254,16 +236,23 @@ nav ul li a:hover {
     .about-me {
         flex-direction: column;
         align-items: center;
+        text-align: center; /* Center align the text */
         padding: 15px;
+        margin: 0 auto; /* Center the container */
+        width: 100%; /* Take full width */
     }
 
     .profile-picture img {
         margin-right: 0;
         margin-bottom: 1rem;
+        display: block; /* Make image a block element */
+        margin-left: auto; /* Center the image */
+        margin-right: auto; /* Center the image */
     }
 
     .about-content {
         padding-left: 0;
+        padding-right: 0; /* Ensure padding is removed from both sides */
     }
 
     .skills-container.active {
