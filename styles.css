@@ -154,3 +154,24 @@ main {
     /* Apply the animation to slide in from the right */
     animation: slideInFromRight 1s ease forwards;
 }
+
+.search-icon img {
+    width: 30px;  /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+}
+
+.search-icon a {
+    text-decoration: none; /* Removes underline from links */
+}
+
+@keyframes wave-animation {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 60% { transform: rotate(-10deg); }
+    40%, 80% { transform: rotate(10deg); }
+}
+
+.wave-emoji {
+    display: inline-block;
+    animation: wave-animation 1.5s 2; /* Run for 1.5 seconds and iterate 2 times */
+    animation-timing-function: ease-in-out;
+}

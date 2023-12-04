@@ -126,3 +126,13 @@ nav ul li a:hover {
         grid-template-columns: 1fr; /* 1 column for mobile screens */
     }
 }
+
+.search-icon img {
+    width: 30px;  /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+}
+
+.search-icon a {
+    text-decoration: none; /* Removes underline from links */
+}
+
