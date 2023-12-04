@@ -59,7 +59,6 @@ nav ul li a:hover {
 
 .about-container {
     padding-top: 20px;
-
     width: 100%;
     max-width: 2000px;
     margin: 0 auto;
@@ -80,7 +79,6 @@ nav ul li a:hover {
     width: 80%; /* Reduced width */
     min-height: 300px; /* Increased height */
     animation: flyInFromTop 0.5s ease-out forwards;
-
 }
 
 .about-me:before {
@@ -102,7 +100,6 @@ nav ul li a:hover {
     box-shadow: 0 0 8px rgba(198, 40, 40, 0.7); /* Glowing effect */
     margin-right: 2rem;
     animation: flyInFromBottom 0.5s ease-out forwards;
-
 }
 
 .about-content {
@@ -134,7 +131,6 @@ nav ul li a:hover {
 }
 
 .skills-section {
-    
     text-align: left;
 }
 
@@ -197,34 +193,6 @@ nav ul li a:hover {
     transform: translateY(-5px); /* Slight hover effect */
 }
 
-/* Add responsive design rules as needed */
-/* Larger screen adjustments */
-@media (min-width: 768px) {
-    .about-me {
-        flex-direction: row; /* Row layout for larger screens */
-        width: 80%;
-    }
-
-    .profile-picture img {
-        margin-right: 2rem;
-        width: 200px;
-        height: 200px;
-    }
-
-    .about-content {
-        text-align: justify;
-        padding-left: 2rem;
-    }
-
-    .skills-section {
-        text-align: left;
-    }
-
-    .tabs {
-        justify-content: left;
-    }
-}
-
 @keyframes flyInFromTop {
     0% {
         opacity: 0;
@@ -235,7 +203,6 @@ nav ul li a:hover {
         transform: translateY(0);
     }
 }
-
 
 @keyframes flyInFromBottom {
     0% {
@@ -248,9 +215,6 @@ nav ul li a:hover {
     }
 }
 
-
-
-
 @keyframes flyInFromRight {
     0% {
         opacity: 0;
@@ -259,5 +223,54 @@ nav ul li a:hover {
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+/* Media queries for smaller screens */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    .logo, .search-icon {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .about-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .about-me {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .profile-picture img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .about-content {
+        padding-left: 0;
+    }
+
+    .skills-container.active {
+        grid-template-columns: repeat(2, 1fr); /* Two-column grid for smaller screens */
+    }
+
+    .skill-card {
+        width: 100%; /* Full width for smaller screens */
     }
 }
