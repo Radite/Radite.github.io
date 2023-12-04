@@ -2,21 +2,20 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #111; /* This should be the dark color from your image */
+    background-color: #111; /* Dark color from your image */
     color: white;
 }
-
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 3em; /* Add padding to match the image */
-    background-color: #000; /* Match the header background color */
+    padding: 1em 3em; /* Padding to match the image */
+    background-color: #000; /* Header background color */
 }
 
 .logo {
-    color: #fff; /* Text color for the logo */
+    color: #fff; /* Logo text color */
     font-weight: bold;
 }
 
@@ -39,7 +38,7 @@ nav ul li a {
 
 nav ul li a.active,
 nav ul li a:hover {
-    color: #C62828; /* This should be the highlight color from your image */
+    color: #C62828; /* Highlight color from your image */
 }
 
 .search-icon {
@@ -47,30 +46,29 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-
-.portfolio h1 {
-    text-align: center;
-    padding-top: 20px;
-}
-
+.portfolio h1,
 .portfolio p {
     text-align: center;
-    margin-bottom: 40px;
 }
-
 
 /* Portfolio Projects Grid */
 .projects-grid {
-    margin-left: 100px;
-    width:1000px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px;
     padding: 20px;
-    margin-right: 100px;
-    animation: flyInFromBottom 1.5s ease-out forwards;
+    margin: 0 auto;
+    max-width: 1000px;
+    animation: gridGrow 1s ease-out forwards, flyInFromBottom 1.5s ease-out forwards;
+}
 
-    
+@keyframes gridGrow {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .project-card {
@@ -80,9 +78,7 @@ nav ul li a:hover {
     overflow: hidden;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
-    height:400px;
-
-
+    height: 400px;
 }
 
 .project-card:hover {
@@ -90,17 +86,15 @@ nav ul li a:hover {
 }
 
 .project-card img {
-    margin-top: 20px;
-    margin-left:15px;
     width: 90%;
+    margin: 10px auto;
     display: block;
-    height: 200px;;
+    height: 200px;
     border-radius: 5px;
 }
 
 .project-info {
     padding: 15px;
-
 }
 
 .project-info h3 {
@@ -125,37 +119,22 @@ nav ul li a:hover {
     font-size: 0.8rem;
 }
 
-
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
+    header, nav ul li, .project-info h3, .project-info p {
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5em 0;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr; /* 1 column for mobile screens */
-    }
-}
-
-
-.portfolio-title h1,
-.portfolio-title p {
-    animation: flyInFromTop 0.5s ease-out forwards;
-}
-
-@keyframes flyInFromTop {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes flyInFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

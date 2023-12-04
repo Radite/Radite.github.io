@@ -198,39 +198,32 @@ nav ul li a:hover {
 }
 
 /* Add responsive design rules as needed */
-@media (max-width: 768px) {
+/* Larger screen adjustments */
+@media (min-width: 768px) {
     .about-me {
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        min-height: 400px; /* Adjusted for mobile */
+        flex-direction: row; /* Row layout for larger screens */
+        width: 80%;
     }
 
     .profile-picture img {
-        margin-bottom: 1rem;
-        margin-right: 0;
+        margin-right: 2rem;
+        width: 200px;
+        height: 200px;
     }
 
-    .skills-container {
-        grid-template-columns: repeat(2, 1fr); /* Two-column grid for mobile */
+    .about-content {
+        text-align: justify;
+        padding-left: 2rem;
     }
 
-    .tab {
-        font-size: 0.8rem; /* Smaller font size for mobile */
-    }
-}
-
-@media (max-width: 768px) {
-    .about-me {
-        width: 90%;
+    .skills-section {
+        text-align: left;
     }
 
-    .skills-container {
-        grid-template-columns: repeat(2, 1fr);
+    .tabs {
+        justify-content: left;
     }
 }
-
-
 
 @keyframes flyInFromTop {
     0% {
