@@ -136,3 +136,7 @@ nav ul li a:hover {
     text-decoration: none; /* Removes underline from links */
 }
 
+.project-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Inherits text color from parent elements */
+}
