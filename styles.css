@@ -1,177 +1,372 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #111; /* This should be the dark color from your image */
-    color: white;
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #C62828;
+  --primary-dark: #8E0000;
+  --primary-light: #FF5F52;
+  --dark-bg: #0F1119;
+  --card-bg: #1A1C25;
+  --text-primary: #F5F5F5;
+  --text-secondary: #BCBCBC;
+  --text-accent: #FF5F52;
+  --gradient-primary: linear-gradient(135deg, #C62828 0%, #8E0000 100%);
+  --transition-main: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 3em; /* Add padding to match the image */
-    background-color: #000; /* Match the header background color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5rem;
+  background-color: rgba(15, 17, 25, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-main);
+}
+
+header.scrolled {
+  padding: 1rem 5rem;
+  background-color: rgba(15, 17, 25, 0.98);
 }
 
 .logo {
-    color: #fff; /* Text color for the logo */
-    font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-main);
+}
+
+.logo:hover::after {
+  width: 100%;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 1em;
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  letter-spacing: 0.5px;
+  transition: var(--transition-main);
 }
 
-nav ul li a.active,
-nav ul li a:hover {
-    color: #C62828; /* This should be the highlight color from your image */
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition-main);
+  transform: translateX(-50%);
+}
+
+nav ul li a:hover, nav ul li a.active {
+  color: var(--primary-light);
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+  width: 100%;
 }
 
 .search-icon {
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: calc(100vh - 60px); /* Adjust based on the header height */
-}
-
-.content {
-    display: flex;
-    justify-content: center; /* This centers the .content in the main axis */
-    align-items: center; /* This centers the .content in the cross axis */
-    gap: 50px; /* This adds space between the introduction and the profile picture */
-}
-
-.introduction {
-    /* Adjust the max-width to fit the content and allow for the image to sit beside */
-    max-width: 600px; /* Adjust as needed based on your content */
-}
-
-.profile-picture {
-    /* Adjust the size of the profile picture to match the design */
-    width: 300px; /* Example size, adjust as needed */
-    height: 300px; /* Example size, adjust as needed */
-    border-radius: 50%;
-    overflow: hidden; /* Ensures the image respects the border-radius */
-    border: 5px solid #C62828; /* Adjust the border color to match your design */
-    border-radius: 50%;
-    box-shadow: 0 0 15px 5px rgba(198, 40, 40, 0.7); /* Adjust color and opacity */
-}
-
-.profile-picture img {
-    width: 100%; /* Make the image fill the container */
-    height: 100%; /* Make the image fill the container */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-    border-radius: 50%; /* If the image itself has rounded corners */
-}
-
-.introduction h1 {
-    font-size: 2.5em; /* Adjust the size to match the image */
-    margin: 0.5em 0;
-}
-
-.introduction h1 .name {
-    color: #C62828; /* This should be the highlight color from your image */
-}
-
-.introduction p {
-    font-size: 1.2em; /* Adjust the size to match the image */
-}
-
-.welcome-link {
-    display: inline-block;
-    background-color: transparent;
-    color: #C62828; /* This should be the highlight color from your image */
-    text-decoration: none;
-
-}
-
-.welcome-link:hover {
-    background-color: #C62828; /* This should be the highlight color from your image */
-    color: #000;
-}
-
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column; /* Stack the elements on smaller screens */
-    }
-
-    .profile-picture {
-        width: 150px; /* Smaller size for the image on mobile */
-        height: 150px;
-        margin-top: 20px; /* Space between the text and the image on mobile */
-    }
-}
-
-@keyframes slideInFromBottom {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-#introduction {
-    /* Apply the animation to slide in from the bottom */
-    animation: slideInFromBottom 1s ease forwards;
-}
-
-#profile-picture {
-    /* Apply the animation to slide in from the right */
-    animation: slideInFromRight 1s ease forwards;
-}
-
-.search-icon img {
-    width: 30px;  /* Adjust the width as needed */
-    height: 30px; /* Adjust the height as needed */
+  display: flex;
+  gap: 1rem;
 }
 
 .search-icon a {
-    text-decoration: none; /* Removes underline from links */
+  text-decoration: none;
+  transition: var(--transition-main);
 }
 
-@keyframes wave-animation {
-    0%, 100% { transform: rotate(0deg); }
-    20%, 60% { transform: rotate(-10deg); }
-    40%, 80% { transform: rotate(10deg); }
+.search-icon img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%);
+  transition: var(--transition-main);
+}
+
+.search-icon a:hover img {
+  filter: grayscale(0%);
+  transform: translateY(-3px);
+}
+
+/* Main Content Styles */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 80px; /* Account for header */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+.introduction {
+  max-width: 600px;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.introduction h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.introduction h1 .name {
+  position: relative;
+  display: inline-block;
+  color: var(--primary-color);
+}
+
+.introduction h1 .name::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background-color: var(--primary-color);
+  bottom: 5px;
+  left: 0;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+#CS-Student {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  position: relative;
+  display: inline-block;
+}
+
+#CS-Student::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  margin-top: 1rem;
+}
+
+.welcome-link {
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  padding: 0.8rem 0;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  position: relative;
+  transition: var(--transition-main);
+}
+
+.welcome-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition-main);
+  transform-origin: left;
+}
+
+.welcome-link:hover {
+  color: var(--primary-light);
+}
+
+.welcome-link:hover::after {
+  transform: scaleX(1.1);
 }
 
 .wave-emoji {
-    display: inline-block;
-    animation: wave-animation 1.5s 2; /* Run for 1.5 seconds and iterate 2 times */
-    animation-timing-function: ease-in-out;
+  display: inline-block;
+  animation: wave-animation 2s infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: 70% 70%;
+  margin-left: 5px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-15px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes wave-animation {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .content {
+    gap: 4rem;
+  }
+  
+  .introduction h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  header {
+    padding: 1rem 2rem;
+  }
+  
+  header.scrolled {
+    padding: 0.8rem 2rem;
+  }
+  
+  .content {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    gap: 2rem;
+    padding-top: 3rem;
+  }
+  
+  .introduction {
+    max-width: 100%;
+  }
+  
+  .introduction h1 {
+    font-size: 2.5rem;
+  }
+  
+  #CS-Student::after {
+    margin: 1rem auto 0;
+  }
+  
+  nav ul {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    padding: 1rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  nav ul {
+    gap: 0.8rem;
+  }
+  
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+  
+  .search-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .introduction h1 {
+    font-size: 2rem;
+  }
+  
+  #CS-Student {
+    font-size: 1.2rem;
+  }
 }

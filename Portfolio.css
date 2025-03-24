@@ -1,154 +1,382 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #111; /* Dark color from your image */
-    color: white;
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #C62828;
+  --primary-dark: #8E0000;
+  --primary-light: #FF5F52;
+  --dark-bg: #0F1119;
+  --card-bg: #1A1C25;
+  --text-primary: #F5F5F5;
+  --text-secondary: #BCBCBC;
+  --text-accent: #FF5F52;
+  --gradient-primary: linear-gradient(135deg, #C62828 0%, #8E0000 100%);
+  --transition-main: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 3em; /* Padding to match the image */
-    background-color: #000; /* Header background color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5rem;
+  background-color: rgba(15, 17, 25, 0.95);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-main);
+}
+
+header.scrolled {
+  padding: 1rem 5rem;
+  background-color: rgba(15, 17, 25, 0.98);
 }
 
 .logo {
-    color: #fff; /* Logo text color */
-    font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-main);
+}
+
+.logo:hover::after {
+  width: 100%;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 1em;
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  letter-spacing: 0.5px;
+  transition: var(--transition-main);
 }
 
-nav ul li a.active,
-nav ul li a:hover {
-    color: #C62828; /* Highlight color from your image */
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition-main);
+  transform: translateX(-50%);
+}
+
+nav ul li a:hover, nav ul li a.active {
+  color: var(--primary-light);
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+  width: 100%;
 }
 
 .search-icon {
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.portfolio h1,
-.portfolio p {
-    text-align: center;
-}
-
-/* Portfolio Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1000px;
-    animation: gridGrow 1s ease-out forwards, flyInFromBottom 1.5s ease-out forwards;
-}
-
-@keyframes gridGrow {
-    from {
-        transform: scale(0.5);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-.project-card {
-    background: #333; /* Dark card background */
-    color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-    height: 400px;
-}
-
-.project-card:hover {
-    transform: translateY(-10px); /* Lift card on hover */
-}
-
-.project-card img {
-    width: 90%;
-    margin: 10px auto;
-    display: block;
-    height: 200px;
-    border-radius: 5px;
-}
-
-.project-info {
-    padding: 15px;
-}
-
-.project-info h3 {
-    text-align: center;
-    color: #C62828; /* Gold color for project title */
-    margin-bottom: 10px;
-}
-
-.project-info p {
-    font-size: 0.9rem; /* Smaller text for description */
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.project-technologies span {
-    display: inline-block;
-    background: #222; /* Darker background for technology tags */
-    color: #C62828; /* Gold color for text */
-    padding: 5px 10px;
-    margin-right: 5px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-}
-
-/* Responsive Design Adjustments */
-@media (max-width: 768px) {
-
-    .projects-grid {
-        grid-template-columns: 1fr; /* 1 column for mobile screens */
-    }
-}
-
-.search-icon img {
-    width: 30px;  /* Adjust the width as needed */
-    height: 30px; /* Adjust the height as needed */
+  display: flex;
+  gap: 1rem;
 }
 
 .search-icon a {
-    text-decoration: none; /* Removes underline from links */
+  text-decoration: none;
+  transition: var(--transition-main);
 }
 
-.project-link {
-    text-decoration: none; /* Removes underline from links */
-    color: inherit; /* Inherits text color from parent elements */
+.search-icon img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%);
+  transition: var(--transition-main);
 }
 
-/*  spinning animation */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.search-icon a:hover img {
+  filter: grayscale(0%);
+  transform: translateY(-3px);
 }
 
-/* Apply the spinning animation to the .hourglass class */
-.hourglass span {
-    display: inline-block;
-    animation: spin 2s linear infinite;
+/* Portfolio Styles */
+main {
+  padding-top: 120px;
+  min-height: 100vh;
+  width: 100%;
 }
+
+.portfolio {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5rem;
+}
+
+.portfolio-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-title h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1rem;
+}
+
+.portfolio-title h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+/* Projects Grid Styles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .project-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .project-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition-main);
+    height: 100%;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transition-main);
+  }
+  
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .project-info h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .project-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition-main);
+  }
+  
+  .project-card:hover .project-info h3::after {
+    width: 60px;
+  }
+  
+  .project-info p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+  
+  .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+  
+  .project-technologies span {
+    background-color: rgba(198, 40, 40, 0.1);
+    color: var(--primary-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition-main);
+  }
+  
+  .project-card:hover .project-technologies span {
+    background-color: rgba(198, 40, 40, 0.2);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1200px) {
+    .portfolio {
+      padding: 0 3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    header {
+      padding: 1.2rem 3rem;
+    }
+    
+    header.scrolled {
+      padding: 1rem 3rem;
+    }
+    
+    .projects-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem 2rem;
+    }
+    
+    header.scrolled {
+      padding: 0.8rem 2rem;
+    }
+    
+    nav ul {
+      gap: 1.5rem;
+    }
+    
+    .portfolio {
+      padding: 0 2rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .logo {
+      font-size: 1.3rem;
+    }
+    
+    nav ul {
+      gap: 1rem;
+    }
+    
+    .project-info h3 {
+      font-size: 1.3rem;
+    }
+    
+    .portfolio-title h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  /* Special Effects for Project Cards */
+  .hourglass {
+    position: relative;
+  }
+  
+  .hourglass::before {
+    content: '⌛';
+    position: absolute;
+    right: -30px;
+    top: 0;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: var(--transition-main);
+  }
+  
+  .project-card:hover .hourglass::before {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+  
+  /* Footer (if you want to add one) */
+  footer {
+    background-color: var(--card-bg);
+    padding: 2rem 5rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  footer p {
+    color: var(--text-secondary);
+  }
+  
+  footer a {
+    color: var(--primary-light);
+    text-decoration: none;
+    transition: var(--transition-main);
+  }
+  
+  footer a:hover {
+    color: var(--text-primary);
+  }
