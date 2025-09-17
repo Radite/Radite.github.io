@@ -1,179 +1,1318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Joshua Meghoo</title>
-  <link rel="stylesheet" href="aboutstyles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Joshua Meghoo</title>
+    <style>
+        /* Import modern fonts and base styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            /* Enhanced color system */
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --secondary: #ff4081;
+            --accent: #00f5ff;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --error: #ff3366;
+            
+            /* Sophisticated backgrounds */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #111118;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --bg-card: rgba(255, 255, 255, 0.08);
+            --bg-hover: rgba(255, 255, 255, 0.12);
+            
+            /* Text hierarchy */
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0aa;
+            --text-muted: #666670;
+            --text-inverse: #0a0a0f;
+            
+            /* Modern gradients */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --gradient-mesh: conic-gradient(from 180deg at 50% 50%, #0066ff 0deg, #ff4081 120deg, #00f5ff 240deg, #0066ff 360deg);
+            
+            /* Elevated shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+            --shadow-neon: 0 0 5px var(--accent), 0 0 10px var(--accent), 0 0 15px var(--accent);
+            
+            /* Fluid spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+            --space-5xl: 8rem;
+            
+            /* Typography scale */
+            --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            
+            /* Micro-interactions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-elastic: 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+
+        /* Enhanced reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: clamp(14px, 1.5vw, 18px);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Dynamic background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--bg-primary);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 64, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 245, 255, 0.15) 0%, transparent 50%);
+            animation: morph 20s ease-in-out infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            animation: drift 30s linear infinite;
+        }
+
+        /* Modern Navigation */
+        .navbar {
+            position: fixed;
+            top: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: var(--space-sm) var(--space-lg);
+            transition: var(--transition-base);
+        }
+
+        .navbar:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.25rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 20px;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-base);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        /* Hero Section */
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: var(--space-4xl);
+            align-items: center;
+            margin-bottom: var(--space-5xl);
+            min-height: 60vh;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modern Profile Card */
+        .profile-card {
+            position: relative;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: var(--space-2xl);
+            overflow: hidden;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition-slow);
+        }
+
+        .profile-card:hover {
+            transform: perspective(1000px) rotateY(0deg) translateZ(50px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-mesh);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto var(--space-xl);
+            display: block;
+            border: 4px solid rgba(0, 245, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.4);
+        }
+
+        .profile-info {
+            text-align: center;
+        }
+
+        .profile-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .profile-title {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+        }
+
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            justify-content: center;
+        }
+
+        .badge {
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            color: var(--accent);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin-bottom: var(--space-5xl);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-4xl);
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-md);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Modern Tabs */
+        .tabs-container {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: var(--space-sm);
+            max-width: fit-content;
+            margin: 0 auto;
+        }
+
+        .tab {
+            padding: var(--space-md) var(--space-xl);
+            background: transparent;
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-base);
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .tab.active {
+            background: var(--gradient-accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .skills-grid.active {
+            display: grid;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            text-align: center;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: var(--transition-base);
+            z-index: -1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 245, 255, 0.3);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .skill-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--space-md);
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition-base);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .skill-level {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+
+        .skill-progress {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress-fill {
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            margin-bottom: var(--space-5xl);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-accent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-4xl);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition-slow);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: calc(50% + var(--space-xl));
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + var(--space-xl));
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: var(--space-lg);
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            position: relative;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .timeline-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact CTA */
+        .cta-section {
+            text-align: center;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: var(--space-4xl);
+            margin-bottom: var(--space-5xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-mesh);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-2xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--gradient-accent);
+            color: white;
+            padding: var(--space-lg) var(--space-2xl);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition-base);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: var(--transition-slow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-2xl);
+            }
+
+            .profile-card {
+                transform: none;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+
+            .navbar {
+                top: var(--space-md);
+                padding: var(--space-sm);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .tabs {
+                flex-direction: column;
+                border-radius: 16px;
+            }
+
+            .tab {
+                border-radius: 12px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: var(--space-md);
+            }
+
+            .timeline::before {
+                left: var(--space-lg);
+            }
+
+            .timeline-dot {
+                left: var(--space-lg);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: calc(var(--space-lg) * 2 + 16px);
+                margin-right: 0;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes morph {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1); 
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.1); 
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-60px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-text {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">JMeghoo();</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="About.html" class="active">About</a></li>
-        <li><a href="Portfolio.html">Portfolio</a></li>
-      </ul>
+    <!-- Dynamic Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+<nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">JMeghoo();</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="About.html" class="nav-link active">About</a></li>
+                <li><a href="Portfolio.html" class="nav-link">Projects</a></li>
+                <li><a href="Contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://github.com/radite" class="social-link" target="_blank" title="GitHub">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/jmeghoo" class="social-link" target="_blank" title="LinkedIn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
     </nav>
-    <div class="search-icon">
-      <a href="https://github.com/radite" target="_blank">
-        <img src="assets/github2.png" alt="GitHub" />
-      </a>
-      <a href="https://linkedin.com/in/jmeghoo" target="_blank">
-        <img src="assets/linkedin.png" alt="LinkedIn" />
-      </a>
-    </div>
-  </header>
-  <main>
-    <div class="about-container">
-      <div class="about-me">
-        <div class="profile-picture">
-          <img src="assets/DP.jpg" alt="Joshua Meghoo" />
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="hero-content">
+                    <h1>About <span class="highlight">Me</span></h1>
+                    <p>
+                        I'm a passionate third-year Computer Science student with an insatiable appetite for learning and a fervent passion for problem-solving. My heart lies in backend development, where I find joy in crafting intricate logic and robust infrastructure that powers modern software systems.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="12">0</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Years Coding</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="assets/DP.jpg" alt="Joshua Meghoo" class="profile-image">
+                    <div class="profile-info">
+                        <h3 class="profile-name">Joshua Meghoo</h3>
+                        <p class="profile-title">Computer Science Student</p>
+                        <div class="profile-badges">
+                            <span class="badge">Full Stack Developer</span>
+                            <span class="badge">ML Enthusiast</span>
+                            <span class="badge">Microsoft Intern</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills-section">
+                <div class="section-header">
+                    <h2>Technical Arsenal</h2>
+                    <p>A comprehensive toolkit of modern technologies and frameworks that I use to bring ideas to life</p>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="languages">Languages</button>
+                        <button class="tab" data-tab="frameworks">Frameworks</button>
+                        <button class="tab" data-tab="tools">Tools & Databases</button>
+                        <button class="tab" data-tab="ml">Machine Learning</button>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="skills-grid active" id="languages">
+                    <div class="skill-card" data-level="90">
+                        <div class="skill-icon">🐍</div>
+                        <div class="skill-name">Python</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">☕</div>
+                        <div class="skill-name">Java</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="88">
+                        <div class="skill-icon">📜</div>
+                        <div class="skill-name">JavaScript</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="82">
+                        <div class="skill-icon">🔷</div>
+                        <div class="skill-name">TypeScript</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="75">
+                        <div class="skill-icon">🌐</div>
+                        <div class="skill-name">C</div>
+                        <div class="skill-level">Intermediate</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="80">
+                        <div class="skill-icon">🐘</div>
+                        <div class="skill-name">PHP</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="skills-grid" id="frameworks">
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">⚛️</div>
+                        <div class="skill-name">React.js</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="80">
+                        <div class="skill-icon">📱</div>
+                        <div class="skill-name">React Native</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="78">
+                        <div class="skill-icon">🚀</div>
+                        <div class="skill-name">Next.js</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="75">
+                        <div class="skill-icon">💚</div>
+                        <div class="skill-name">Vue.js</div>
+                        <div class="skill-level">Intermediate</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="88">
+                        <div class="skill-icon">🟢</div>
+                        <div class="skill-name">Node.js</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">🌶️</div>
+                        <div class="skill-name">Flask</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Databases -->
+                <div class="skills-grid" id="tools">
+                    <div class="skill-card" data-level="90">
+                        <div class="skill-icon">🐙</div>
+                        <div class="skill-name">Git & GitHub</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="82">
+                        <div class="skill-icon">🐘</div>
+                        <div class="skill-name">PostgreSQL</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="80">
+                        <div class="skill-icon">🍃</div>
+                        <div class="skill-name">MongoDB</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="75">
+                        <div class="skill-icon">📊</div>
+                        <div class="skill-name">MySQL</div>
+                        <div class="skill-level">Intermediate</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">📮</div>
+                        <div class="skill-name">Postman</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="78">
+                        <div class="skill-icon">📓</div>
+                        <div class="skill-name">Jupyter</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="skills-grid" id="ml">
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">🧠</div>
+                        <div class="skill-name">TensorFlow</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="80">
+                        <div class="skill-icon">🔥</div>
+                        <div class="skill-name">PyTorch</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="88">
+                        <div class="skill-icon">🔬</div>
+                        <div class="skill-name">Scikit-learn</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="90">
+                        <div class="skill-icon">🐼</div>
+                        <div class="skill-name">Pandas</div>
+                        <div class="skill-level">Expert</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="85">
+                        <div class="skill-icon">🔢</div>
+                        <div class="skill-name">NumPy</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card" data-level="78">
+                        <div class="skill-icon">📈</div>
+                        <div class="skill-name">Matplotlib</div>
+                        <div class="skill-level">Advanced</div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey Section -->
+            <section class="journey-section">
+                <div class="section-header">
+                    <h2>My Journey</h2>
+                    <p>Key milestones and experiences that have shaped my development as a technologist</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025 - Present</div>
+                            <div class="timeline-title">Microsoft Software Engineering Intern</div>
+                            <div class="timeline-description">
+                                Contributing to Microsoft's cutting-edge projects, working with enterprise-scale systems and learning from industry leaders in the technology space.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023 - Present</div>
+                            <div class="timeline-title">Computer Science Studies</div>
+                            <div class="timeline-description">
+                                Third-year Computer Science student specializing in software engineering, algorithms, and machine learning. Maintaining strong academic performance while building practical projects.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <div class="timeline-title">Machine Learning Specialization</div>
+                            <div class="timeline-description">
+                                Dove deep into machine learning and AI, building recommendation systems, predictive models, and exploring the intersection of data science and software engineering.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-title">Full-Stack Development Focus</div>
+                            <div class="timeline-description">
+                                Expanded expertise in full-stack development, mastering React, Node.js, and modern web technologies while building production-ready applications.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2022</div>
+                            <div class="timeline-title">Programming Journey Begins</div>
+                            <div class="timeline-description">
+                                Started my programming journey with Python and Java, discovering my passion for problem-solving and algorithmic thinking through various coding challenges.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2 class="cta-title">Let's Build Something Amazing</h2>
+                <p class="cta-description">
+                    I'm always open to discussing new opportunities, collaborating on exciting projects, or just having a conversation about technology and innovation.
+                </p>
+                <a href="Contact.html" class="btn-primary">
+                    <span>Get In Touch</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </section>
         </div>
-        <div class="about-content">
-          <h2>About Me</h2>
-          <p>
-            I'm Joshua Meghoo, a third-year Computer Science student with a
-            fervent passion for problem-solving and an insatiable appetite for
-            learning. My heart lies in backend development, where I find joy in
-            crafting the intricate logic and robust infrastructure that power
-            software systems. Algorithms are my playground, and I revel in
-            optimizing code for efficiency.
-          </p>
-        </div>
-      </div>
-      <div class="skills-section">
-        <div class="Skills-content">
-          <h3>Skills</h3>
-        </div>
-        <ul class="tabs">
-          <li class="tab active" onclick="showTechStack()">Tech Stack</li>
-          <li class="tab" onclick="showTools()">Tools</li>
-        </ul>
-        <div class="skills-container tech-stack active">
-          <!-- Existing Tech Stack Skills -->
-          <div class="skill-card">
-            <img src="assets/html.png" alt="HTML" />
-            <span>HTML</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/css.png" alt="CSS" />
-            <span>CSS</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/php.jpg" alt="PHP" />
-            <span>PHP</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/javascript.png" alt="JavaScript" />
-            <span>JavaScript</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/python.png" alt="Python" />
-            <span>Python</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/java-logo-1.png" alt="Java" />
-            <span>Java</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/C.png" alt="C" />
-            <span>C</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/NodeJS.png" alt="NodeJS" />
-            <span>NodeJS</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/VueJS.png" alt="VueJS" />
-            <span>VueJS</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/ReactJS.png" alt="ReactJS" />
-            <span>ReactJS</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/Bootstrap.png" alt="Bootstrap" />
-            <span>Bootstrap</span>
-          </div>
-          <!-- New additions to Tech Stack -->
-          <div class="skill-card">
-            <img src="assets/typescript.png" alt="TypeScript" />
-            <span>TypeScript</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/nextjs.png" alt="Next.js" />
-            <span>Next.js</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/expressjs.png" alt="Express.js" />
-            <span>Express.js</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/flask.png" alt="Flask" />
-            <span>Flask</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/postgresql.png" alt="PostgreSQL" />
-            <span>PostgreSQL</span>
-          </div>
-        </div>
-        <div class="skills-container tools">
-          <!-- Existing Tools Skills -->
-          <div class="skill-card">
-            <img src="assets/github.png" alt="GitHub" />
-            <span>GitHub</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/MySQL.png" alt="MySQL" />
-            <span>MySQL</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/MongoDB.png" alt="MongoDB" />
-            <span>MongoDB</span>
-          </div>
-          <!-- New additions to Tools -->
-          <div class="skill-card">
-            <img src="assets/git.png" alt="Git" />
-            <span>Git</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/postman.png" alt="Postman" />
-            <span>Postman</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/jupyter.png" alt="Jupyter Notebook" />
-            <span>Jupyter Notebook</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/numpy.png" alt="NumPy" />
-            <span>NumPy</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/pandas.png" alt="Pandas" />
-            <span>Pandas</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/matplotlib.png" alt="Matplotlib" />
-            <span>Matplotlib</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/tensorflow.png" alt="TensorFlow" />
-            <span>TensorFlow</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/scikit.png" alt="Scikit-learn" />
-            <span>Scikit-learn</span>
-          </div>
-          <div class="skill-card">
-            <img src="assets/pytorch.png" alt="PyTorch" />
-            <span>PyTorch</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <script src="aboutscript.js"></script>
+    </main>
+
+    <script>
+        // Tab Switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and grids
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.skills-grid').forEach(g => g.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding grid
+                const targetGrid = document.getElementById(tab.dataset.tab);
+                targetGrid.classList.add('active');
+                
+                // Animate progress bars
+                setTimeout(() => {
+                    targetGrid.querySelectorAll('.skill-progress-fill').forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 100);
+                    });
+                }, 100);
+            });
+        });
+
+        // Animated Counter
+        class AnimatedCounter {
+            constructor(element, target, duration = 2000) {
+                this.element = element;
+                this.target = parseInt(target);
+                this.duration = duration;
+                this.startTime = null;
+                this.startValue = 0;
+            }
+
+            animate(currentTime) {
+                if (!this.startTime) this.startTime = currentTime;
+                const progress = Math.min((currentTime - this.startTime) / this.duration, 1);
+                
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.floor(this.startValue + (this.target - this.startValue) * easeOutQuart);
+                
+                this.element.textContent = currentValue;
+                
+                if (progress < 1) {
+                    requestAnimationFrame((time) => this.animate(time));
+                }
+            }
+
+            start() {
+                requestAnimationFrame((time) => this.animate(time));
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.classList.add('visible');
+                    }
+                    if (entry.target.classList.contains('stat-number')) {
+                        const counter = new AnimatedCounter(
+                            entry.target,
+                            entry.target.getAttribute('data-target'),
+                            2000
+                        );
+                        counter.start();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe timeline items
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+
+            // Observe stat numbers
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                observer.observe(stat);
+            });
+
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    navbar.style.background = 'rgba(10, 10, 15, 0.95)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+                }
+            });
+
+            // Initialize progress bars for active tab
+            setTimeout(() => {
+                document.querySelectorAll('.skills-grid.active .skill-progress-fill').forEach(fill => {
+                    const width = fill.style.width;
+                    fill.style.width = '0';
+                    setTimeout(() => {
+                        fill.style.width = width;
+                    }, 500);
+                });
+            }, 500);
+
+            // 3D Profile Card Effect
+            const profileCard = document.querySelector('.profile-card');
+            profileCard.addEventListener('mousemove', (e) => {
+                const rect = profileCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            profileCard.addEventListener('mouseleave', () => {
+                profileCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    </script>
 </body>
 </html>
